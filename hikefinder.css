@@ -1,0 +1,41 @@
+html,
+body,
+h1,
+h4{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+h1{
+	background-color: green;
+}
+.intro{
+	margin: 10px auto 10px;
+	background-image: url("hike-background.jpg");
+	background-size: cover;
+	padding: 100px 40px 100px 40px;
+	width: 50%;
+}
+.content-box{
+	background-color: white;
+	padding: 10px;
+}
+.searchbar{
+	text-align: center;
+}
+.list{
+	margin: 10px auto 10px;
+	width: 50%;
+}
+.thumbnail{
+	width: 200px;
+	height: 200px;
+	margin-right: 10px;
+}
+.trail{
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+	border: solid grey 1px;
+	margin: 10px auto 10px;
+}
