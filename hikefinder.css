@@ -1,7 +1,8 @@
 html,
 body,
 h1,
-h4{
+h4,
+ul{
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -10,7 +11,12 @@ h1{
 	background-color: green;
 }
 .intro{
-	margin: 10px auto 10px;
+	background-color: grey;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.img-background{
+	margin: 0 auto;
 	background-image: url("hike-background.jpg");
 	background-size: cover;
 	padding: 100px 40px 100px 40px;
@@ -22,6 +28,10 @@ h1{
 }
 .searchbar{
 	text-align: center;
+}
+input[name="search"], button[type="submit"]{
+	padding: 5px;
+	font-size: 20px;
 }
 .list{
 	margin: 10px auto 10px;
@@ -38,4 +48,8 @@ h1{
 	padding: 10px;
 	border: solid grey 1px;
 	margin: 10px auto 10px;
+}
+ul{
+	display: block;
+	list-style: none;
 }

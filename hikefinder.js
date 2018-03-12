@@ -4,10 +4,9 @@ function userInput(input){
 		key: "AIzaSyCNJzNizHdvwnuL9F51_tksAa0jeP5vhdQ",
 		address: input	};
 	let success = function(data){
+		console.log(data);
 		let longitude = data.results[0].geometry.location.lng;
 		let latitude = data.results[0].geometry.location.lat;
-		console.log(longitude);
-		console.log(latitude);
 		getTrail(longitude, latitude);
 	}
 	$.getJSON(geoApi, geoParams, success); 
@@ -30,7 +29,7 @@ function getTrail(getLon, getLat){
 			let summary = apiData.trails[item].summary;
 			let link = apiData.trails[item].url;
 			let trails = '<div class="trail">' +
-				'<img src="https://www.michigan.org/sites/default/files/styles/5_3_medium/public/grid-items/Trails%20-%20Option%201.jpg?itok=tyyiJR4U" alt="dummy_thumbnail" class="thumbnail">' +
+				//'<img src="https://www.michigan.org/sites/default/files/styles/5_3_medium/public/grid-items/Trails%20-%20Option%201.jpg?itok=tyyiJR4U" alt="dummy_thumbnail" class="thumbnail">' +
 				'<div class="trail-info">' +
 					`<h4>${trailName}</h4>` +
 					'<ul>' +
@@ -51,7 +50,6 @@ $(function(){
 		event.preventDefault();
 		$(".list").html("");
 		let location = $('input[name="search"]').val()
-		console.log(location);
 		userInput(location);
 	})
 })
