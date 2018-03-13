@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Hike Finder</title>
 	<link rel="stylesheet" type="text/css" href="hikefinder.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="hikefinder.js"></script>
 </head>
 <body>
-	<h1 role="banner"><img src=""> Hike Finder</h1>
+	<header>
+		<h1 role="banner"><img src=""> Hike Finder</h1>
+	</header>
 	<main role="main">
 		<section role="contentinfo" class="intro">
 			<div class="img-background">
 				<div class="content-box">
 					<p>
-						Hiking is a great soucre to enjoy the beauty of this world. 
+						Hiking is a great source to enjoy the beauty of this world. 
 						It is an activity that is both invigorating to both the body and the mind.
-						Most people may not be aware of these amazing trails that around are around
+						Most people may not be aware of these amazing trails that are around
 						their area. Let Hike Finder help you find your next trail.
 					</p>
 					<blockquote>
@@ -23,17 +23,19 @@
 						<footer><cite>-Lao Tzu</cite></footer>
 					</blockquote>
 				</div>
-			</div>
-			
+			</div>	
 		</section>
 		<form action="#" id="locationInput" class="searchbar">
 			<input type="text" name="search" placeholder="city, country">
 			<button type="submit">submit</button>
 		</form>
-		<div id="trail_list" class="list">
-
-		</div>
+		<section role="contentinfo" id="trail_list" class="list">
+		</section>
 	</main>
-	<footer></footer>
+	<footer role="contentinfo">
+		 <div id="copyright">Copyright &copy; 2018, Kevin Thanh Pham</div>
+	</footer>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="hikefinder.js"></script>
 </body>
 </html>

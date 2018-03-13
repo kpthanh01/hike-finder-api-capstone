@@ -7,6 +7,9 @@ ul{
 	margin: 0;
 	padding: 0;
 }
+body{
+	background: #e6f2ff;
+}
 h1{
 	background-color: green;
 }
@@ -25,8 +28,9 @@ h1{
 .content-box{
 	background-color: white;
 	padding: 10px;
+	opacity: 0.8;
 }
-.searchbar{
+.searchbar, footer, h2{
 	text-align: center;
 }
 input[name="search"], button[type="submit"]{
@@ -34,8 +38,8 @@ input[name="search"], button[type="submit"]{
 	font-size: 20px;
 }
 .list{
-	margin: 10px auto 10px;
-	width: 50%;
+	margin: 10px auto;
+	width: 100%;
 }
 .thumbnail{
 	width: 200px;
@@ -45,9 +49,11 @@ input[name="search"], button[type="submit"]{
 .trail{
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	padding: 10px;
 	border: solid grey 1px;
 	margin: 10px auto 10px;
+	background: white;
 }
 ul{
 	display: block;

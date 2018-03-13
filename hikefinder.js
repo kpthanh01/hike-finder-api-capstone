@@ -1,48 +1,81 @@
 function userInput(input){
-	let geoApi = "https://maps.googleapis.com/maps/api/geocode/json?";
-	let geoParams = {
-		key: "AIzaSyCNJzNizHdvwnuL9F51_tksAa0jeP5vhdQ",
-		address: input	};
-	let success = function(data){
-		console.log(data);
-		let longitude = data.results[0].geometry.location.lng;
-		let latitude = data.results[0].geometry.location.lat;
-		getTrail(longitude, latitude);
-	}
-	$.getJSON(geoApi, geoParams, success); 
+	const apiCall = {
+	    url: "https://maps.googleapis.com/maps/api/geocode/json?",
+	    data: {
+	      key: "AIzaSyCNJzNizHdvwnuL9F51_tksAa0jeP5vhdQ",
+	      address: input
+	    },
+	    dataType: 'json',
+	    type: 'GET',
+	    success: function(data){
+			if (data.status === "ZERO_RESULTS") {
+				$(".list").html("<h2>No Results Found</h2>");
+			} else {
+				let longitude = data.results[0].geometry.location.lng;
+				let latitude = data.results[0].geometry.location.lat;
+				for(item in data.results[0].address_components){
+					console.log(data.results[0].address_components[item]);
+				}
+				getTrail(longitude, latitude, input.toUpperCase());
+			}
+		}
+	};
+  	$.ajax(apiCall)
+  		.done(function(result) {
+            console.log(result);
+        })
+        .fail(function(jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+    	}
+    );
+	 
 }
 
-function getTrail(getLon, getLat){
-	let hikeproject_api = "https://www.hikingproject.com/data/get-trails?";
-	let hikeParams = {
-		lon: getLon,
-		lat: getLat,
-		sort: "distance",
-		key: "200225309-c4058b64c8cf1c0a968a6d510572d109"
-	}
-	let success = function results(apiData){
-		console.log(apiData);
-
-		for(item in apiData.trails){
-			let trailName = apiData.trails[item].name;
-			let location = apiData.trails[item].location;
-			let summary = apiData.trails[item].summary;
-			let link = apiData.trails[item].url;
-			let trails = '<div class="trail">' +
-				//'<img src="https://www.michigan.org/sites/default/files/styles/5_3_medium/public/grid-items/Trails%20-%20Option%201.jpg?itok=tyyiJR4U" alt="dummy_thumbnail" class="thumbnail">' +
-				'<div class="trail-info">' +
-					`<h4>${trailName}</h4>` +
-					'<ul>' +
-						`<li>Location: ${location}</li>` +
-						`<li>Summary: ${summary}</li>` +
-						`<li>Link: <a href="${link}" target="blank_">${link}</a> </li>` +
-					'</ul>' +
-				'</div>' +
-			'</div>';
-		$(".list").append(trails);
+function getTrail(getLon, getLat, userInput){
+	const apiCall = {
+		url: "https://www.hikingproject.com/data/get-trails?",
+		data: {
+			lon: getLon,
+			lat: getLat,
+			sort: "distance",
+			key: "200225309-c4058b64c8cf1c0a968a6d510572d109"
+		},
+		dataType: 'json',
+		type: "GET",
+		success: function(apiData){
+			let trailList = "";
+			for(item in apiData.trails){
+				let trails = '<div class="trail">' +
+					'<div class="trail-info">' +
+						`<h4>${apiData.trails[item].name}</h4>` +
+						'<ul>' +
+							`<li>Location: ${apiData.trails[item].location}</li>` +
+							`<li>Summary: ${apiData.trails[item].summary}</li>` +
+							`<li>Difficulty: ${apiData.trails[item].difficulty}</li>` +
+							`<li>Distance: ${apiData.trails[item].length} miles</li>` +
+							`<li>Link: <a href="${apiData.trails[item].url}" target="blank_">${apiData.trails[item].url}</a> </li>` +
+						'</ul>' +
+					'</div>' +
+					`<img src="${apiData.trails[item].imgMedium}" alt="dummy_thumbnail" class="thumbnail">` +
+				'</div>';
+				trailList += trails;
+			}
+			$(".list").html(`<h2>Trails Near ${userInput}</h2>`);
+			$(".list").append(trailList);
 		}
 	}
-	$.getJSON(hikeproject_api, hikeParams, success);
+	$.ajax(apiCall)
+		.done(function(result) {
+	            console.log(result);
+	    })
+	    .fail(function(jqXHR, error, errorThrown) {
+	        console.log(jqXHR);
+	        console.log(error);
+	        console.log(errorThrown);
+	   	}
+    );
 }
 
 $(function(){
