@@ -1,1 +1,1 @@
-# hike-finder-api-capstone
+# Hike Finder:
