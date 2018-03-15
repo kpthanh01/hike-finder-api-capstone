@@ -8,14 +8,21 @@ function userInput(input){
 	    dataType: 'json',
 	    type: 'GET',
 	    success: function(data){
+	    	let inputArr = input.split(" ");
 			if (data.status === "ZERO_RESULTS") {
 				$(".list").html("<h2>No Results Found</h2>");
 			} else {
 				let longitude = data.results[0].geometry.location.lng;
 				let latitude = data.results[0].geometry.location.lat;
+				/*
 				for(item in data.results[0].address_components){
-					console.log(data.results[0].address_components[item]);
+					if (inputArr.include(data.results[0].address_components[item].short_name)) {
+						console.log(true);
+					} else {
+						console.log(false);
+					}
 				}
+				*/
 				getTrail(longitude, latitude, input.toUpperCase());
 			}
 		}
@@ -53,12 +60,11 @@ function getTrail(getLon, getLat, userInput){
 						'<ul>' +
 							`<li>Location: ${apiData.trails[item].location}</li>` +
 							`<li>Summary: ${apiData.trails[item].summary}</li>` +
-							`<li>Difficulty: ${apiData.trails[item].difficulty}</li>` +
 							`<li>Distance: ${apiData.trails[item].length} miles</li>` +
 							`<li>Link: <a href="${apiData.trails[item].url}" target="blank_">${apiData.trails[item].url}</a> </li>` +
 						'</ul>' +
 					'</div>' +
-					`<img src="${apiData.trails[item].imgMedium}" alt="dummy_thumbnail" class="thumbnail">` +
+					`<img src="${apiData.trails[item].imgMedium}" alt="park_thumbnail" class="thumbnail">` +
 				'</div>';
 				trailList += trails;
 			}

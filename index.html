@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="hikefinder.css">
 </head>
 <body>
-	<header>
-		<h1 role="banner"><img src=""> Hike Finder</h1>
+	<header role="banner">
+		<h1>Hike Finder</h1>
 	</header>
 	<main role="main">
 		<section role="contentinfo" class="intro">
@@ -26,8 +26,9 @@
 			</div>	
 		</section>
 		<form action="#" id="locationInput" class="searchbar">
-			<input type="text" name="search" placeholder="city, country">
-			<button type="submit">submit</button>
+			<label>Find Your Trail Here: </label>
+			<input type="text" name="search" placeholder="city, country" aria-label="passive">
+			<button type="submit">search</button>
 		</form>
 		<section role="contentinfo" id="trail_list" class="list">
 		</section>

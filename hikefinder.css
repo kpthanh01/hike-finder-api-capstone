@@ -12,6 +12,8 @@ body{
 }
 h1{
 	background-color: green;
+	font-size: 60px;
+	padding-left: 10px;
 }
 .intro{
 	background-color: grey;
@@ -27,6 +29,7 @@ h1{
 }
 .content-box{
 	background-color: white;
+	font-size: 25px;
 	padding: 10px;
 	opacity: 0.8;
 }
@@ -55,7 +58,16 @@ input[name="search"], button[type="submit"]{
 	margin: 10px auto 10px;
 	background: white;
 }
+.trail-info h4{
+	margin-bottom: 10px;
+	font-size: 25px;
+}
 ul{
 	display: block;
 	list-style: none;
+	font-size: 20px;
 }
+
+@media screen and (min-width:700px){
+
+} 
