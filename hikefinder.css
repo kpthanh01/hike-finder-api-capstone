@@ -12,42 +12,54 @@ body{
 }
 h1{
 	background-color: green;
-	font-size: 60px;
+	font-size: 30px;
 	padding-left: 10px;
 }
-.intro{
-	background-color: grey;
-	padding: 10px;
-	margin-bottom: 10px;
+.intro {
+    background-color: grey;
+    /* padding: 10px; */
+    margin-bottom: 1rem;
 }
 .img-background{
+	display: block;
 	margin: 0 auto;
 	background-image: url("hike-background.jpg");
 	background-size: cover;
-	padding: 100px 40px 100px 40px;
-	width: 50%;
+	background-position: center center;
+	padding: 1rem;
+	/*padding: 100px 40px 100px 40px;*/
+	width: 100%;
 }
 .content-box{
+	display: block;
+	width: 80%;
 	background-color: white;
-	font-size: 25px;
+	font-size: 13px;
 	padding: 10px;
 	opacity: 0.8;
 }
 .searchbar, footer, h2{
 	text-align: center;
 }
+.searchbar label{
+	display: block;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
 input[name="search"], button[type="submit"]{
 	padding: 5px;
-	font-size: 20px;
+	font-size: 10px;
 }
 .list{
 	margin: 10px auto;
 	width: 100%;
 }
 .thumbnail{
-	width: 200px;
-	height: 200px;
+	width: 100px;
+	height: 100px;
 	margin-right: 10px;
+	margin-left: 10px;
 }
 .trail{
 	display: flex;
@@ -60,14 +72,37 @@ input[name="search"], button[type="submit"]{
 }
 .trail-info h4{
 	margin-bottom: 10px;
-	font-size: 25px;
+	font-size: 15px;
 }
 ul{
 	display: block;
 	list-style: none;
-	font-size: 20px;
+	font-size: 10px;
 }
 
 @media screen and (min-width:700px){
-
+	h1{
+		font-size: 60px;
+	}
+	.img-background{
+		width: 50%;
+		padding: 100px 40px 100px 40px;
+	}
+	.content-box{
+		margin: 0 auto;
+		font-size: 25px;
+	}
+	input[name="search"], button[type="submit"]{
+		font-size: 20px;
+	}
+	.thumbnail{
+		width: 200px;
+		height: 200px;
+	}
+	.trail-info h4{
+		font-size: 30px;
+	}
+	ul{
+		font-size: 20px;
+	}
 } 

@@ -1,3 +1,10 @@
+function checkURL(url){
+	let urlOutput = url;
+	if (url == "" || url == undefined || url == null) {
+		urlOutput = "noImage.png";
+	}
+	return urlOutput;
+}
 function userInput(input){
 	const apiCall = {
 	    url: "https://maps.googleapis.com/maps/api/geocode/json?",
@@ -56,15 +63,14 @@ function getTrail(getLon, getLat, userInput){
 			for(item in apiData.trails){
 				let trails = '<div class="trail">' +
 					'<div class="trail-info">' +
-						`<h4>${apiData.trails[item].name}</h4>` +
+						`<h4><a href="${apiData.trails[item].url}" target="blank_">${apiData.trails[item].name}</a></h4>` +
 						'<ul>' +
 							`<li>Location: ${apiData.trails[item].location}</li>` +
 							`<li>Summary: ${apiData.trails[item].summary}</li>` +
 							`<li>Distance: ${apiData.trails[item].length} miles</li>` +
-							`<li>Link: <a href="${apiData.trails[item].url}" target="blank_">${apiData.trails[item].url}</a> </li>` +
 						'</ul>' +
 					'</div>' +
-					`<img src="${apiData.trails[item].imgMedium}" alt="park_thumbnail" class="thumbnail">` +
+					`<a href="${checkURL(apiData.trails[item].url)}" target="blank_"><img src="${checkURL(apiData.trails[item].imgMedium)}" alt="park_thumbnail" class="thumbnail"></a>` +
 				'</div>';
 				trailList += trails;
 			}
