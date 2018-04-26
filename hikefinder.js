@@ -1,3 +1,4 @@
+// check to see if the url exists
 function checkURL(url){
 	let urlOutput = url;
 	if (url == "" || url == undefined || url == null) {
@@ -5,6 +6,8 @@ function checkURL(url){
 	}
 	return urlOutput;
 }
+
+// a function that makes an AJAX call to Google's geoloaction api
 function userInput(input){
 	const apiCall = {
 	    url: "https://maps.googleapis.com/maps/api/geocode/json?",
@@ -21,15 +24,8 @@ function userInput(input){
 			} else {
 				let longitude = data.results[0].geometry.location.lng;
 				let latitude = data.results[0].geometry.location.lat;
-				/*
-				for(item in data.results[0].address_components){
-					if (inputArr.include(data.results[0].address_components[item].short_name)) {
-						console.log(true);
-					} else {
-						console.log(false);
-					}
-				}
-				*/
+
+				// calling this function to make another AJAX call
 				getTrail(longitude, latitude, input.toUpperCase());
 			}
 		}
@@ -47,6 +43,7 @@ function userInput(input){
 	 
 }
 
+// A function that makes an AJAX call to grab a json of hiking trail.
 function getTrail(getLon, getLat, userInput){
 	const apiCall = {
 		url: "https://www.hikingproject.com/data/get-trails?",
